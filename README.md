@@ -118,4 +118,3 @@ Download to files or text, with support of concurrent downloading, streaming tra
 This plugin collects no data.
 
 All the file transformations are completed locally. NO data is transmitted to third-party services.
-
