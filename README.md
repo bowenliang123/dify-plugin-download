@@ -79,7 +79,7 @@ Download to files or text, with support of concurrent downloading, streaming tra
 
 ## Changelog
 
-- 0.7.0
+- 1.0.0
     - Streaming text output with in chunk size of 512 chars by default
 
 - 0.6.1
