@@ -225,7 +225,7 @@ def handle_all_done(tool: Tool,
                 )
             else:
                 downloaded_file_text = Path(file_path).read_text(encoding=encoding or "utf-8")
-                return send_text_in_chunks(tool, text=downloaded_file_text)
+                yield from send_text_in_chunks(tool, text=downloaded_file_text)
         finally:
             # Clean up the downloaded temporary files
             force_delete_path(file_path)
