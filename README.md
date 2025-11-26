@@ -79,6 +79,9 @@ Download to files or text, with support of concurrent downloading, streaming tra
 
 ## Changelog
 
+- 0.7.0
+    - Streaming text output with in chunk size of 512 chars by default
+
 - 0.6.1
     - make `download_to_text` tool respect HTTP response encoding in decoding bytes to text    
 
