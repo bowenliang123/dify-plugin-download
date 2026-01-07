@@ -34,6 +34,7 @@ def parse_common_params(tool_parameters: dict[str, Any]) -> CommonPrams:
     parsed_params.request_method = tool_parameters.get("request_method", "GET")
     parsed_params.request_timeout = float(tool_parameters.get("request_timeout", "5"))
     parsed_params.request_headers = parse_json_string_dict(tool_parameters.get("request_headers"))
+    parsed_params.request_body_str = tool_parameters.get("request_body_str")
     parsed_params.ssl_certificate_verify = tool_parameters.get("ssl_certificate_verify", "false") == "true"
     parsed_params.proxy_url = tool_parameters.get("proxy_url")
     parsed_params.custom_output_filenames = tool_parameters.get("output_filename", "").split("\n")
