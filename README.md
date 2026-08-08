@@ -79,6 +79,10 @@ Download to files or text, with support of concurrent downloading, streaming tra
 
 ## Changelog
 
+- 1.1.0
+    - Upgrade dify-plugin SDK to 0.10.1
+    - Upgrade httpx to 0.28.1 and yarl to 1.24.5
+
 - 1.0.0
     - Streaming text output with in chunk size of 512 chars by default
 
