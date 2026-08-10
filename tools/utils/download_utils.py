@@ -1,5 +1,6 @@
 import os
 import re
+import mimetypes
 import tempfile
 import threading
 from collections.abc import Generator
@@ -129,7 +130,18 @@ def download_to_temp(method: str, url: str,
             encoding = response.encoding
             filename = custom_filename or guess_file_name(url, response)
 
-            with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+            # Guess the MIME type from the filename if:
+            # 1. content_type is None
+            # 2. content_type is 'application/octet-stream' (generic binary)
+            # 3. custom_filename is provided (override server's content type)
+            if not mime_type or mime_type == 'application/octet-stream' or custom_filename:
+                guessed_type, _ = mimetypes.guess_type(filename)
+                if guessed_type:
+                    mime_type = guessed_type
+
+            custom_file_extension = os.path.splitext(filename)[1] if filename else None
+            # pass suffix to NamedTemporaryFile to ensure the file has the correct extension
+            with tempfile.NamedTemporaryFile(delete=False, suffix=custom_file_extension) as temp_file:
                 file_path = temp_file.name
                 try:
                     # Stream the response content to the temporary file
